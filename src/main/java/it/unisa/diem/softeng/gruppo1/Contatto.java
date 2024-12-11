@@ -30,5 +30,28 @@ public class Contatto {
     public boolean verifyContact(){
         return true;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public String[] getNumeroDiTelefono() {
+        return numeroDiTelefono;
+    }
+
+    public String[] getIndirizzoEmail() {
+        return indirizzoEmail;
+    }
     
+     public String getTelString(){
+        return this.numeroDiTelefono[0] + "\n" + this.numeroDiTelefono[1] + "\n" + this.numeroDiTelefono[2];
+    }
+    
+    public String getMailString(){
+        return this.indirizzoEmail[0] + "\n" + this.indirizzoEmail[1] + "\n" + this.indirizzoEmail[2];
+    }
 }
