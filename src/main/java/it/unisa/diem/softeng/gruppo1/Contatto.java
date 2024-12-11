@@ -7,11 +7,20 @@ package it.unisa.diem.softeng.gruppo1;
  */
 public class Contatto {
     
+     
+    private String nome;
+    private String cognome;
+    private String numeroDiTelefono[];
+    private String indirizzoEmail[];
+    
     /**
      * @brief Costruttore di default.
      */
     public Contatto(String nome, String cognome, String[] numeroDiTelefono, String[] indirizzoEmail){
-        
+         this.nome = nome;
+        this.cognome = cognome;
+        this.numeroDiTelefono = numeroDiTelefono;
+        this.indirizzoEmail = indirizzoEmail;
     }
     
     /**
