@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ContattoTest {
     
+    @Test
     public void testCostruttore() {
          String[] num = {"12649875", "65891472", "32864791"};
         String[] mail = {"mario@mail1.it", "mario@mail2.it", "mario@mail3.it"};
@@ -30,6 +31,38 @@ public class ContattoTest {
         assertEquals("mario@mail3.it", c.getIndirizzoEmail()[2]);
         assertEquals("Mario", c.getNome());
         assertEquals("Rossi", c.getCognome());
+    }
+    
+    @Test
+    public void testVerifyContact(){
+        String[] num = {"12649875", "65891472", "32864791"};
+        String[] mail = {"mario@mail1.it", "mario@mail2.it", "mario@mail3.it"};
+        Contatto c = new Contatto("", "", num, mail);
+        assertFalse(c.verifyContact());
+    }
+    
+    @Test
+    public void testVerifyContact2(){
+        String[] num = {"12649875", "65891472", "32864791"};
+        String[] mail = {"mario@mail1.it", "mario@mail2.it", "mario@mail3.it"};
+        Contatto c = new Contatto("Giacomo", "", num, mail);
+        assertTrue(c.verifyContact());
+    }
+    
+    @Test
+    public void testVerifyContact3(){
+        String[] num = {"12649875", "65891472", "32864791"};
+        String[] mail = {"mario@mail1.it", "mario@mail2.it", "mario@mail3.it"};
+        Contatto c = new Contatto("", "Verdi", num, mail);
+        assertTrue(c.verifyContact());
+    }
+    
+    @Test
+    public void testVerifyContact4(){
+        String[] num = {"12649875", "65891472", "32864791"};
+        String[] mail = {"mario@mail1.it", "mario@mail2.it", "mario@mail3.it"};
+        Contatto c = new Contatto("Giacomo", "Verdi", num, mail);
+        assertTrue(c.verifyContact());
     }
     
 }

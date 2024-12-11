@@ -28,7 +28,11 @@ public class Contatto {
      * @return Restituisce true se la verifica dei campi è andata a buon fine altrimenti false.
      */
     public boolean verifyContact(){
-        return true;
+         Verifica ind=new VerificaMail();
+        Verifica tel=new VerificaTelefono();
+        if(this.nome.isEmpty() && this.cognome.isEmpty()) return false;
+        if(ind.verify(this.indirizzoEmail) && tel.verify(this.numeroDiTelefono)) return true;
+        else return false;
     }
 
     public String getNome() {

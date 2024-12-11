@@ -1,4 +1,4 @@
-
+package it.unisa.diem.softeng.gruppo1;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,8 +6,6 @@ import org.junit.jupiter.api.BeforeAll;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-import prova.tryrubricamaven.Contatto;
-import prova.tryrubricamaven.VerificaTelefono;
 
 public class VerificaTelefonoTest {
     
