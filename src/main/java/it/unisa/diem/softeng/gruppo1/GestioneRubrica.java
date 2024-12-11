@@ -20,7 +20,7 @@ public class GestioneRubrica {
      * @brief Costruttore di default.
      */
     public GestioneRubrica(){
-        
+        this.listaContatti = new ArrayList<>();
     }
     
     /**
@@ -67,4 +67,7 @@ public class GestioneRubrica {
         
     }
     
+    public List<Contatto> getListaContatti() {
+        return listaContatti;
+    }
 }
