@@ -335,17 +335,6 @@ public class InterfacciaUtente {
         //this.notifyLabel.setAlignment(Pos.CENTER);
     }
     
-    private void cancelAddOperation(){
-        
-    }
-    
-    private void cancelSearch(){
-        
-    }
-    
-    private void cancelModifyOperation(){
-        
-    }
     
     private void setModifyFields(){
         
@@ -355,4 +344,52 @@ public class InterfacciaUtente {
         
     }
     
+    
+    // Annullamento dell'operazione di ricerca, il textfield per la ricerca viene svuotato ed � visualizzata nuovamente la lista originale
+    
+    private void cancelSearch(){
+        HBox hbox = (HBox)this.searchCancelButton.getParent();
+        hbox.getChildren().remove(this.searchCancelButton);
+        //hbox.getChildren().add(this.searchButton);
+        this.showRubrica();
+        this.ricercaTf.clear();
+    }
+    
+    private void cancelAddOperation(){
+        this.resetNotify();
+        this.stage.setScene(this.primaryScene);
+        this.resetAddFields();
+    }
+    
+    private void cancelModifyOperation(){
+        this.resetNotify();
+        this.stage.setScene(this.primaryScene);
+        this.resetModifyFields();
+    }
+    
+    private void resetNotify(){
+        VBox v = (VBox)stage.getScene().getRoot();
+        if(v.getChildren().contains(notifyLabel)){
+            v.getChildren().remove(notifyLabel);
+        }
+        if(v.getChildren().contains(notifyFileLabel)){
+            v.getChildren().remove(notifyFileLabel);
+        }
+    }
+    
+    // Svuota il contenuto dei textfield nella scena di aggiunta contatto
+    
+    private void resetAddFields(){
+        for(int i = 0; i < 8; i++){
+            this.addTf[i].clear();
+        }
+    }
+    
+    // Svuota il contenuto dei textfield nella scena di modifica contatto
+
+    private void resetModifyFields(){
+        for(int i = 0; i < 8; i++){
+            this.modifyTf[i].clear();
+        }
+    }
 }
