@@ -66,7 +66,7 @@ public class GestioneRubrica {
     public void sort(){
         
     }
-    
+
     public List<Contatto> getListaContatti() {
         return listaContatti;
     }
