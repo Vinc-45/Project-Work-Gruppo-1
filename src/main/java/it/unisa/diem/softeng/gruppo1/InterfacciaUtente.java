@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  */
 public class InterfacciaUtente {
     
-        private Scene primaryScene;
+    private Scene primaryScene;
     private Scene addScene;
     private Scene modifyScene;
     private TextField ricercaTf;
@@ -126,6 +126,67 @@ public class InterfacciaUtente {
      * @brief Carica una rubrica da un file selezionato.
      */
     public void loadRubrica(){
+        
+    }
+    
+    // Creazione di un nuovo contatto a partire dai campi compilati dall'utente
+    
+    private Contatto askAdd() {
+        String nome = this.addTf[0].getText();
+        String cognome = this.addTf[1].getText();
+        String[] telefono = new String[3];
+        String[] mail = new String[3];
+        for(int i = 2, j = 0; i < 5; i++, j++){
+            telefono[j] = this.addTf[i].getText();
+        }
+        for(int i = 5, j = 0; i < 8; i++, j++){
+            mail[j] = this.addTf[i].getText();
+        }
+        
+        return new Contatto(nome, cognome, telefono, mail);
+    }
+    
+    // Modifica di un contatto tramite creazione di un nuovo contatto a partire dai campi compilati dall'utente
+
+    private Contatto askEdit() {
+        String nome = this.modifyTf[0].getText();
+        String cognome = this.modifyTf[1].getText();
+        String[] telefono = new String[3];
+        String[] mail = new String[3];
+        for(int i = 2, j = 0; i < 5; i++, j++){
+            telefono[j] = this.modifyTf[i].getText();
+        }
+        for(int i = 5, j = 0; i < 8; i++, j++){
+            mail[j] = this.modifyTf[i].getText();
+        }
+        
+        return new Contatto(nome, cognome, telefono, mail);
+    }
+
+    // Richiesta di conferma di eliminazione di un contatto
+    
+    private void askDelete() {
+        this.deleteStage.show();
+    }
+    
+    // Restituisce il contatto selezionato dalla TableView
+    
+    private Contatto getContact() {
+        return this.contactTable.getSelectionModel().getSelectedItem();
+    }
+    
+    // Impostazione dei textfield nella scena di modifica contatto in seguito a selezione di un contatto esistente nella lista
+    
+    private void setModifyFields(){
+        Contatto c = this.getContact();
+        this.modifyTf[0].setText(c.getNome());
+        this.modifyTf[1].setText(c.getCognome());
+        for(int i = 2, j = 0; i < 5; i++, j++){
+            this.modifyTf[i].setText(c.getNumeroDiTelefono()[j]);
+        }
+        for(int i = 5, j = 0; i < 8; i++, j++){
+            this.modifyTf[i].setText(c.getIndirizzoEmail()[j]);
+        }
         
     }
     
@@ -311,8 +372,8 @@ public class InterfacciaUtente {
     
     private void initButtons(){
         
-        this.primaryAddButton.setOnAction(event -> {this.stage.setScene(this.addScene);});
-        this.primaryModifyButton.setOnAction(event -> {this.stage.setScene(this.modifyScene); this.setModifyFields();});
+        this.primaryAddButton.setOnAction(event -> this.primaryAddAction());
+        this.primaryModifyButton.setOnAction(event -> this.primaryModifyAction());
         this.primaryRemoveButton.setOnAction(event -> this.askDelete());
         this.deleteConfirm.setOnAction(event -> this.deleteContact());
         this.deleteCancel.setOnAction(event -> {this.deleteStage.hide();});
@@ -334,16 +395,6 @@ public class InterfacciaUtente {
         this.notifyFileLabel = new Label("Errore nel caricamento/salvataggio del file");
         //this.notifyLabel.setAlignment(Pos.CENTER);
     }
-    
-    
-    private void setModifyFields(){
-        
-    }
-    
-    private void askDelete(){
-        
-    }
-    
     
     // Annullamento dell'operazione di ricerca, il textfield per la ricerca viene svuotato ed � visualizzata nuovamente la lista originale
     
@@ -391,5 +442,13 @@ public class InterfacciaUtente {
         for(int i = 0; i < 8; i++){
             this.modifyTf[i].clear();
         }
+    }
+    
+    private void primaryAddAction(){
+        
+    }
+    
+    private void primaryModifyAction(){
+        
     }
 }
