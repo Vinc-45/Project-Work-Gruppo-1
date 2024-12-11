@@ -11,17 +11,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import it.unisa.diem.softeng.gruppo1.VerificaMail;
 
-/**
- *
- * @author bello
- */
+
+
 public class VerificaMailTest {
     
     public VerificaMailTest() {
     }
     
-     @Test
+    @Test
     public void testVerify(){
         
         String[] mail = {"mario@mail1.it", "mario@mail2.it", "mario@mail3.it"};
