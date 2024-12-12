@@ -1,6 +1,7 @@
 
 package it.unisa.diem.softeng.gruppo1;
 
+import java.util.List;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
@@ -227,6 +228,26 @@ public class InterfacciaUtente {
             v.getChildren().add(this.notifyFileLabel);
         }
     }
+    
+    // Copia la lista dei contatti in GestioneRubrica nell'ObservableList di interfacciaUtente
+    
+    private void copyList(){
+        List<Contatto> list = this.rubrica.getListaContatti();
+        this.contatti.clear();
+        for(Contatto c: list){
+            this.contatti.add(c);
+        }
+    }
+    
+    // Copia il risultato della ricerca (una lista) nella ObservableList di InterfacciaUtente
+    
+    private void copyList(List<Contatto> searchResult){
+        this.contatti.clear();
+        for(Contatto c: searchResult){
+            this.contatti.add(c);
+        }
+    }
+    
     // Impostazione dei textfield nella scena di modifica contatto in seguito a selezione di un contatto esistente nella lista
     
     private void setModifyFields(){
