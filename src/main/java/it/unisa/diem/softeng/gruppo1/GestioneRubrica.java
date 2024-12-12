@@ -29,7 +29,7 @@ public class GestioneRubrica {
      * 
      * @post La lista sarà ordinata secondo un criterio alfabetico per cognome.
      */
-     public List<Contatto> sort() {
+     public void sort() {
      }
     
     
@@ -42,7 +42,7 @@ public class GestioneRubrica {
      * Se non ci sono risultati, la lista restituita sarà vuota.
      */
     public List<Contatto> search(String s) {
-       
+       return null;
     }
 
 

@@ -6,11 +6,13 @@ package it.unisa.diem.softeng.gruppo1;
 */
 public class GestioneFile {
     
+    private GestioneRubrica gr;
+    
     /**
      * @brief Costruttore di default
      */
-    public GestioneFile(){
-        
+    public GestioneFile(GestioneRubrica gr){
+        this.gr=gr;
     }
     
     /**
@@ -32,5 +34,8 @@ public class GestioneFile {
     public boolean loadRubricaOnFile(){
         return true;
     }
-    
+
+    public GestioneRubrica getGestioneRubrica() {
+        return gr;
+    }
 }
