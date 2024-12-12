@@ -1,7 +1,5 @@
-import prova.tryrubricamaven.Contatto;
-import prova.tryrubricamaven.GestioneRubrica;
+package it.unisa.diem.softeng.gruppo1;
 
-//import org.junit.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;

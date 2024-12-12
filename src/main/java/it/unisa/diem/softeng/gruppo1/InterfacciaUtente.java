@@ -65,7 +65,7 @@ public class InterfacciaUtente {
     /**
      * @brief Costruttore di default
      */
-    public InterfacciaUtente(){
+    public InterfacciaUtente(GestioneRubrica rubrica){
         this.contatti = FXCollections.observableArrayList();
         this.rubrica = rubrica;
         this.initNotify();
