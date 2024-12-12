@@ -190,6 +190,23 @@ public class InterfacciaUtente {
         return this.contactTable.getSelectionModel().getSelectedItem();
     }
     
+    // Notifica all'utente che il contatto inserito non è valido
+
+    private void notifyUser(){
+        VBox v = (VBox)this.stage.getScene().getRoot();
+        if(!v.getChildren().contains(this.notifyLabel)){
+            v.getChildren().add(this.notifyLabel);
+        }
+    }
+    
+    // Notifica all'utente un errore nll'apertura o nel salvataggio di un file
+    
+    private void notifyUserFile(){
+        VBox v = (VBox)this.stage.getScene().getRoot();
+        if(!v.getChildren().contains(this.notifyFileLabel)){
+            v.getChildren().add(this.notifyFileLabel);
+        }
+    }
     // Impostazione dei textfield nella scena di modifica contatto in seguito a selezione di un contatto esistente nella lista
     
     private void setModifyFields(){
