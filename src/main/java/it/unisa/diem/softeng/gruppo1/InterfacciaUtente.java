@@ -1,6 +1,7 @@
 
 package it.unisa.diem.softeng.gruppo1;
 
+import java.io.File;
 import java.util.List;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -22,6 +23,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -203,6 +205,15 @@ public class InterfacciaUtente {
     
     private void askDelete() {
         this.deleteStage.show();
+    }
+    
+    // Apertura del file chooser e selezione del file da caricare
+    
+    private File askLoad() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Scegli un file");
+        File file = fileChooser.showOpenDialog(this.fileChooserStage);
+        return file;
     }
     
     // Restituisce il contatto selezionato dalla TableView
