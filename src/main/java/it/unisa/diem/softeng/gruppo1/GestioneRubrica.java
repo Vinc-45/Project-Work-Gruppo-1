@@ -68,8 +68,10 @@ public class GestioneRubrica {
      * @post Se il contatto esiste, allora viene rimosso. La dimensione della
      * lista viene decrementata.
      */
-    public void remove(Contatto c) {
-        
+    public void remove(Contatto contatto) {
+        if (!listaContatti.remove(contatto)){
+            throw new IllegalArgumentException("Il contatto non è presente nella rubrica.");
+        }
     }
 
     public List<Contatto> getListaContatti() {
