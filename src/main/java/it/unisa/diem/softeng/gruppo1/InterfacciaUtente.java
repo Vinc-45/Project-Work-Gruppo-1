@@ -81,21 +81,41 @@ public class InterfacciaUtente {
      * @brief Aggiunta del contatto alla tabella.
      */
     public void addContact(){
-        
+        Contatto c = this.askAdd();
+        this.resetNotify();
+        if(c.verifyContact()){
+            this.rubrica.add(c);
+            this.showRubrica();
+            this.stage.setScene(this.primaryScene);
+            this.resetAddFields();
+        }else{
+            this.notifyUser();
+        }
     }
     
     /**
      * @brief Rimuove un contatto selezionato nella tabella.
      */
     public void deleteContact(){
-        
+        this.deleteStage.hide();
+        this.rubrica.remove(this.getContact());
+        this.showRubrica();
     }
     
     /**
      * @brief Modifica un contatto selezionato nella tabella.
      */
     public void editContact(){
-        
+        Contatto c = this.askEdit();
+        this.resetNotify();
+        if(c.verifyContact()){
+            this.rubrica.remove(this.getContact());
+            this.rubrica.add(c);
+            this.showRubrica();
+            this.stage.setScene(this.primaryScene);
+        }else{
+            this.notifyUser();
+        }
     }
     
     /**
