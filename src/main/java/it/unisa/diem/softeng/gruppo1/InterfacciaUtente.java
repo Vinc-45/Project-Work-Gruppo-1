@@ -129,6 +129,18 @@ public class InterfacciaUtente {
         
     }
     
+    public Stage getStage(){
+        return this.stage;
+    }
+    
+    public void setStage(Stage stage){
+        this.stage = stage;
+    }
+    
+    public Scene getPrimaryScene(){
+        return this.primaryScene;
+    }
+    
     // Creazione di un nuovo contatto a partire dai campi compilati dall'utente
     
     private Contatto askAdd() {
