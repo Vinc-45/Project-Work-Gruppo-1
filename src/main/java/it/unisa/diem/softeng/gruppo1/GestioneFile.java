@@ -38,4 +38,20 @@ public class GestioneFile {
     public GestioneRubrica getGestioneRubrica() {
         return gr;
     }
+    
+    private boolean checkExtension(String nomeFile){
+        if(nomeFile.contains(".")) {//controllo se il file contiene il . e quindi ha un estensione
+            String estensione = nomeFile.substring(nomeFile.lastIndexOf(".") + 1);
+            if(!(estensione.contentEquals("csv"))){//controllo se il file ha estensione csv
+               System.out.println("file non nel formato corretto");
+               return false;
+            }
+            else{
+                return true;
+            }
+       }
+        else{
+            return false;
+        } 
+    }
 }

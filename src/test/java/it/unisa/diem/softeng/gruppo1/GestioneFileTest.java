@@ -12,12 +12,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- *
- * @author bello
- */
+
 public class GestioneFileTest {
    
+    @Test
     public void testCostruttore(){
         GestioneRubrica gr=new GestioneRubrica();
         String[] num={"2344554","36576",""};
