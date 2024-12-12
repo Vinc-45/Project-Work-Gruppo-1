@@ -141,6 +141,9 @@ public class InterfacciaUtente {
         return this.primaryScene;
     }
     
+    private String askSearch() {
+        return this.ricercaTf.getText();
+    }
     // Creazione di un nuovo contatto a partire dai campi compilati dall'utente
     
     private Contatto askAdd() {
