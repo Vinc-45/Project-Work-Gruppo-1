@@ -222,6 +222,16 @@ public class InterfacciaUtente {
         this.deleteStage.show();
     }
     
+    // Apertura del file chooser e specifica del file da salvare
+
+    private File askSave() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Scegli un file");
+        File file = fileChooser.showSaveDialog(this.fileChooserStage);
+        return file;
+    }
+
+    
     // Apertura del file chooser e selezione del file da caricare
     
     private File askLoad() {
