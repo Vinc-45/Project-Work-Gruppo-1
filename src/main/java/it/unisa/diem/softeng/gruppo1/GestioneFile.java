@@ -1,9 +1,11 @@
 
 package it.unisa.diem.softeng.gruppo1;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -68,7 +70,29 @@ public class GestioneFile {
      * @return Restituisce true se il file è stato caricato correttamente altrimenti false
      */
     public boolean loadRubricaFromFile(File f){
-        return true;
+        String nomeFile=f.getName();
+         if(!this.checkExtension(nomeFile)) return false;//controllo l'estensione del file
+        try(BufferedReader br=new BufferedReader(new FileReader(f))){
+            
+            if(br.readLine()==null) return true;
+            
+            String line;
+            
+            while((line=br.readLine()) != null){//prelevo le infromazioni dal file e inserisco i contatti ottenuti in rubrica
+                String fields[]= line.split(";",-1);
+                String num[]={fields[2],fields[3],fields[4]};
+                String ind[]={fields[5],fields[6],fields[7]};
+                Contatto c= new Contatto(fields[0],fields[1],num,ind);
+                this.gr.add(c);
+            }
+            return true;
+        } catch (FileNotFoundException ex) {
+            System.out.println("File non trovato");
+            return false;
+        } catch (IOException ex) {
+          System.out.println("IO Exception");
+            return false;
+        }
     }
 
     public GestioneRubrica getGestioneRubrica() {
