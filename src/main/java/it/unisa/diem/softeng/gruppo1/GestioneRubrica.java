@@ -90,7 +90,36 @@ public class GestioneRubrica {
      * Se non ci sono risultati, la lista restituita sarà vuota.
      */
     public List<Contatto> search(String s) {
-       return null;
+       List<Contatto> risultatoRicerca = new ArrayList<>();
+        String a=s.toLowerCase();//Pongo tutte le stringhe a lowerCase per non fare distinzioni tra caratteri maiuscoli e minuscoli
+        for(Contatto contatto: listaContatti){
+            String nome= contatto.getNome().toLowerCase();
+            String cognome= contatto.getCognome().toLowerCase();
+             /*
+                verifico se la lunghezza del nome e cognome di ogni contatto è superiore alla stringa passata in input
+                per evitare eccezioni del tipo ArrayIndexOutOfBoundException
+             */
+            if(nome.length()>=a.length() && cognome.length()>=a.length()){ //nome e cognome hanno entrambi dimensione maggiore della stringa
+                nome=nome.substring(0, a.length());
+                cognome=cognome.substring(0, a.length());
+                if( cognome.contentEquals(a) || nome.contentEquals(a)) {//controllo se la stringa è contenuta all'interno del nome o del cognome
+                    risultatoRicerca.add(contatto);
+                }
+            }
+            else if(nome.length()<a.length() && cognome.length()>=a.length() ){ //Solo il cognome ha dimensione maggiore della stringa
+                cognome=cognome.substring(0, a.length());
+                if( cognome.contentEquals(a)) {//controllo se la stringa è contenuta nel cognome
+                    risultatoRicerca.add(contatto);
+                }
+            }
+            else if(nome.length()>=a.length() && cognome.length()<a.length()){//Solo il nome ha dimensione maggiore della stringa
+                nome=nome.substring(0, a.length());
+                if(nome.contentEquals(a)) {//controllo se la stringa è contenuta nel nome
+                    risultatoRicerca.add(contatto);
+                }
+            }    
+        }
+        return risultatoRicerca;
     }
 
 

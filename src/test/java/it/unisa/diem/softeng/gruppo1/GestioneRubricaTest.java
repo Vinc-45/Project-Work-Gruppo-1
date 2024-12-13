@@ -101,8 +101,36 @@ class GestioneRubricaTest {
         assertEquals(contatto4, rubrica.getListaContatti().get(3)); // Rossi, Andrea
         assertEquals(contatto3, rubrica.getListaContatti().get(4)); // Rossi, Mario
         assertEquals(contatto1, rubrica.getListaContatti().get(5)); // Verdi, Luigi
-        
-        
-        
+    }
+
+
+
+ // TEST DI SEARCH
+    @Test
+    void testSearch() { 
+        GestioneRubrica rubrica = new GestioneRubrica();
+        String[] n1 = {"123456789","",""};
+        String[] e1 = {"rossi.mario@example.com","",""};
+        String[] n2 = {"987654321","",""};
+        String[] e2 = {"bianchi.anna@example.com","",""};
+        String[] n3 = {"111222333","",""};
+        String[] e3 = {"verdi.luigi@example.com","",""};
+        Contatto contatto1 = new Contatto("Mario", "Rossi", n1, e1);
+        Contatto contatto2 = new Contatto("Anna", "Bianchi", n2, e2);
+        Contatto contatto3 = new Contatto("Luigi", "Verdi", n3, e3);
+        rubrica.add(contatto1);
+        rubrica.add(contatto2);
+        rubrica.add(contatto3);
+        // Caso in cui si trovano corrispondenze
+        List<Contatto> risultati = rubrica.search("Ros");
+        assertEquals(1, risultati.size());
+        assertEquals("Mario", risultati.get(0).getNome());
+        // Caso senza corrispondenze
+        risultati = rubrica.search("gia");
+        assertEquals(0, risultati.size());
+        // Caso con pi  corrispondenze
+        risultati = rubrica.search("V");
+        assertEquals(1, risultati.size());
+        assertEquals("Luigi", risultati.get(0).getNome());
     }
 }
