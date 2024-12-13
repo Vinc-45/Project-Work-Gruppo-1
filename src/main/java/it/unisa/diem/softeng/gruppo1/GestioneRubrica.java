@@ -60,7 +60,6 @@ public class GestioneRubrica {
             // se i cognomi sono uguali, confronta i nomi
             return compareStrings(nome1, nome2);
         });
-        return this.listaContatti;
     }
     
     private boolean isNullOrEmpty(String str) {

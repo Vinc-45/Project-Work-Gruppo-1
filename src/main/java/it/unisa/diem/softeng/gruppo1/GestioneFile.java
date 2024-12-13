@@ -1,6 +1,13 @@
 
 package it.unisa.diem.softeng.gruppo1;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  * @brief classe di utilità per le operazioni su file
 */
@@ -21,8 +28,37 @@ public class GestioneFile {
      * @param[in] Il file selezionato dall'utente
      * @return Restituisce true se il file è stato salvato correttamente altrimenti false
      */
-    public boolean saveRubricaOnFile(){
-        return true;
+    public boolean saveRubricaOnFile(File f){
+         String nomeFile=f.getName();
+       if(!this.checkExtension(nomeFile)) return false;        
+        try( PrintWriter pw=new PrintWriter(new BufferedWriter(new FileWriter(f))) ){ //try with resources ci permette di definire dei paramentri dopo il try in modo tale che chiude gli stream al termine del try
+            pw.println("NOME;COGNOME;NUMERO DI TELEFONO;;;INDIRIZZO EMAIL");
+            
+            for(Contatto c:this.gr.getListaContatti()){//inserisco i contatti presenti nella rubrica all'interno del file
+                pw.print(c.getNome());
+                pw.append(';');
+                 pw.print(c.getCognome());
+                pw.append(';');
+                String[] num=c.getNumeroDiTelefono();
+                for(int i=0;i<3;i++){
+                   pw.print(num[i]);
+                   pw.append(';'); 
+                }
+                String[] ind=c.getIndirizzoEmail();
+                for(int i=0;i<3;i++){
+                   pw.print(ind[i]);
+                   pw.append(';'); 
+                } 
+                 pw.append('\n');
+            }
+            return true;
+            }   catch (FileNotFoundException ex) {
+            System.out.println("File non trovato");
+            return false;
+        } catch (IOException ex) {
+            System.out.println("IO Exception");
+            return false;
+        }
     }
     
     /**
@@ -31,7 +67,7 @@ public class GestioneFile {
      * @param[in] Il file selezionato dall'utente
      * @return Restituisce true se il file è stato caricato correttamente altrimenti false
      */
-    public boolean loadRubricaOnFile(){
+    public boolean loadRubricaFromFile(File f){
         return true;
     }
 
