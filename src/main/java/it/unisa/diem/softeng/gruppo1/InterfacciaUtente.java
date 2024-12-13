@@ -127,7 +127,13 @@ public class InterfacciaUtente {
      * @post La lista in input non viene modificata, la lista locale viene aggiornata.
      */
     public void showRubrica(){
-        
+        this.rubrica.sort();
+        this.copyList();
+    }
+    
+    public void showRubrica(List<Contatto> searchResult){
+        this.contatti.clear();
+        this.copyList(searchResult);
     }
     
     /**
@@ -135,7 +141,16 @@ public class InterfacciaUtente {
      * 
      */
     public void searchContact(){
-        
+        String s = this.askSearch();
+        if(!s.isEmpty()){
+            HBox hbox = (HBox)this.searchButton.getParent();
+            //hbox.getChildren().remove(this.searchButton);
+            if(!hbox.getChildren().contains(this.searchCancelButton)){
+                hbox.getChildren().add(this.searchCancelButton);
+            }
+            List<Contatto> list = this.rubrica.search(s);
+            this.showRubrica(list);
+        }
     }
     
     /**
