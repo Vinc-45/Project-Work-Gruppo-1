@@ -157,14 +157,29 @@ public class InterfacciaUtente {
      * @brief Salva la rubrica su un file selezionato.
      */
     public void saveRubrica(){
-        
+        File file = this.askSave();
+        if(file==null){
+            return;
+        }
+        GestioneFile gf=new GestioneFile(this.rubrica);
+        if(!gf.saveRubricaOnFile(file)){
+            this.notifyUserFile();
+        }
     }
     
     /**
      * @brief Carica una rubrica da un file selezionato.
      */
     public void loadRubrica(){
-        
+         File file = this.askLoad();
+        if(file==null){
+            return;
+        }
+        GestioneFile gf=new GestioneFile(this.rubrica);
+        if(!gf.loadRubricaFromFile(file)) {
+            this.notifyUserFile();
+        }
+        this.showRubrica(this.rubrica.getListaContatti());
     }
     
     public Stage getStage(){
@@ -505,7 +520,7 @@ public class InterfacciaUtente {
         //this.notifyLabel.setAlignment(Pos.CENTER);
     }
     
-    // Annullamento dell'operazione di ricerca, il textfield per la ricerca viene svuotato ed � visualizzata nuovamente la lista originale
+    // Annullamento dell'operazione di ricerca, il textfield per la ricerca viene svuotato ed   visualizzata nuovamente la lista originale
     
     private void cancelSearch(){
         HBox hbox = (HBox)this.searchCancelButton.getParent();
