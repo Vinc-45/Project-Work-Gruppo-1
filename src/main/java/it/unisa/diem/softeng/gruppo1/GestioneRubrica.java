@@ -30,6 +30,55 @@ public class GestioneRubrica {
      * @post La lista sarà ordinata secondo un criterio alfabetico per cognome.
      */
      public void sort() {
+	 listaContatti.sort((c1, c2) -> {
+            String cognome1 = c1.getCognome();
+            String nome1 = c1.getNome();
+            String cognome2 = c2.getCognome();
+            String nome2 = c2.getNome();
+    
+            // Gestione dei casi di COGNOME VUOTO.
+            if (isNullOrEmpty(cognome1) && isNullOrEmpty(cognome2)) {
+
+                // Entrambi i cognomi vuoti, confronta solo i nomi.
+                return compareStrings(nome1, nome2);
+
+            } else if (isNullOrEmpty(cognome1)) {
+                // Se il cognome del primo è vuoto, viene dopo.
+                return 1;
+
+            } else if (isNullOrEmpty(cognome2)) {
+                // Se il cognome del secondo è vuoto, viene dopo.
+                return -1;
+            }
+    
+            // Confronto COGNOMI presenti.
+            int cognomeComparison = compareStrings(cognome1, cognome2);
+            if (cognomeComparison != 0) {
+                return cognomeComparison;
+            }
+    
+            // se i cognomi sono uguali, confronta i nomi
+            return compareStrings(nome1, nome2);
+        });
+        return this.listaContatti;
+    }
+    
+    private boolean isNullOrEmpty(String str) {
+        return str == null || str.isEmpty();
+    }
+    
+    private int compareStrings(String s1, String s2) {
+        if (s1 == null && s2 == null) {
+            return 0; // Se entrambi sono null, sono uguali.
+
+        } else if (s1 == null) {
+            return 1; // Se il primo è null, viene dopo.
+
+        } else if (s2 == null) {
+            return -1; // Se il secondo è null, viene dopo.
+        }
+        return s1.compareToIgnoreCase(s2); // Confronto case-insensitive.
+    
      }
     
     
