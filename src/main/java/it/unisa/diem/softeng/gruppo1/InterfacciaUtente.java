@@ -544,10 +544,13 @@ public class InterfacciaUtente {
     }
     
     private void primaryAddAction(){
-        
+        this.resetNotify();
+        this.stage.setScene(this.addScene);
     }
     
     private void primaryModifyAction(){
-        
+        this.resetNotify();
+        this.stage.setScene(this.modifyScene);
+        this.setModifyFields();
     }
 }
