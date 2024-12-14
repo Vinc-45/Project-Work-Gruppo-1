@@ -132,5 +132,19 @@ public class VerificaMailTest {
         assertFalse(vm.verify(mail));
     }
     
-   
+    @Test
+    public void testVerify15(){
+        
+        String[] mail = {"verdi@mail1.it", "hey@domain."};
+        VerificaMail vm = new VerificaMail();
+        assertFalse(vm.verify(mail));
+    } 
+    
+    @Test
+    public void testVerify16(){
+        
+        String[] mail = {"verdi@mail1.it", "hey@domain.","",""};
+        VerificaMail vm = new VerificaMail();
+        assertFalse(vm.verify(mail));
+    } 
 }

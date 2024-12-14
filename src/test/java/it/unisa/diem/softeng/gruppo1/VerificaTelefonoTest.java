@@ -80,4 +80,22 @@ public class VerificaTelefonoTest {
         assertFalse(vt.verify(num));
         
     }
+    
+    @Test
+    public void testVerify9(){
+        
+        String[] num = {"7859", ".,*?658"};
+        VerificaTelefono vt = new VerificaTelefono();
+        assertFalse(vt.verify(num));
+        
+    }
+    
+    @Test
+    public void testVerify10(){
+        
+        String[] num = {"7859", "", ".,*?658",""};
+        VerificaTelefono vt = new VerificaTelefono();
+        assertFalse(vt.verify(num));
+        
+    }
 }
