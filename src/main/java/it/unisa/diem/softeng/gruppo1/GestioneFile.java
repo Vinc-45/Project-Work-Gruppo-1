@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * @brief classe di utilità per le operazioni su file
+ * @brief Classe di utilità per le operazioni su file
 */
 public class GestioneFile {
     
@@ -65,7 +65,7 @@ public class GestioneFile {
     
     /**
      * @brief Carica la rubrica da file
-     * @pre il file esiste ed è nel formato corretto
+     * @pre Il file esiste ed è nel formato corretto
      * @param[in] Il file selezionato dall'utente
      * @return Restituisce true se il file è stato caricato correttamente altrimenti false
      */

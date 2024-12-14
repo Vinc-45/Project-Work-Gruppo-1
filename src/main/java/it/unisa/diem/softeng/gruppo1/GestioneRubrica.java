@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @brief La classe 'GestioneRubrica' fornisce funzionalità per ordinare, cercare,
- * aggiungere.
+ * @brief Classe che fornisce funzionalità per ordinare, cercare,
+ * aggiungere e rimuovere un contatto.
  */
 public class GestioneRubrica {
 
@@ -26,8 +26,7 @@ public class GestioneRubrica {
     /**
      * @brief Ordina i contatti della rubrica secondo un criterio alfabetico per cognome
      * e nome.
-     * 
-     * @post La lista sarà ordinata secondo un criterio alfabetico per cognome.
+     * @post La lista è ordinata
      */
      public void sort() {
 	 listaContatti.sort((c1, c2) -> {
@@ -83,9 +82,8 @@ public class GestioneRubrica {
     
     /**
      * @brief Cerca contatti nella rubrica.
-     * 
+     * @param[in] s La stringa da cercare.
      * @post Non modifica la lista esistente.
-     * 
      * @return Una lista di contatti che soddisfano i criteri di ricerca.
      * Se non ci sono risultati, la lista restituita sarà vuota.
      */
@@ -125,7 +123,8 @@ public class GestioneRubrica {
 
     /**
      * @brief Aggiunge un contatto alla rubrica e quindi alla lista dei contatti.
-     * 
+     * @param[in] nuovoContatto Il contatto da aggiungere alla rubrica.
+     * @pre Il contatto deve essere valido.
      * @post Il nuovo contatto viene aggiunto alla lista, incrementando la sua 
      * dimensione di uno.
      */
@@ -133,14 +132,13 @@ public class GestioneRubrica {
         if ((nuovoContatto.getCognome() != null && !nuovoContatto.getCognome().isEmpty()) ||
              (nuovoContatto.getNome() != null && !nuovoContatto.getNome().isEmpty())) {
                   listaContatti.add(nuovoContatto); // Se i campi non sono vuoti aggiunge il contatto.
-       // System.out.println("Contatto aggiunto: " + nuovoContatto);
     }
 }
 
 
     /**
      * @brief Rimuove un contatto dalla dalla lista.
-     * 
+     * @param[in] contatto Il contatto da rimuovere.
      * @pre Il contatto che deve essere rimosso deve esistere in rubrica.
      * @post Se il contatto esiste, allora viene rimosso. La dimensione della
      * lista viene decrementata.

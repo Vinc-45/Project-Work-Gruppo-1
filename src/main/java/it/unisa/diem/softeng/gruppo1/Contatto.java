@@ -17,14 +17,14 @@ public class Contatto {
      * @brief Costruttore di default.
      */
     public Contatto(String nome, String cognome, String[] numeroDiTelefono, String[] indirizzoEmail){
-         this.nome = nome;
+        this.nome = nome;
         this.cognome = cognome;
         this.numeroDiTelefono = numeroDiTelefono;
         this.indirizzoEmail = indirizzoEmail;
     }
     
     /**
-     * @param[in] Il contatto di cui si vuole verificare la validità.
+     * @brief Verifica se il contatto corrente è valido
      * @return Restituisce true se la verifica dei campi è andata a buon fine altrimenti false.
      */
     public boolean verifyContact(){
