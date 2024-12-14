@@ -128,11 +128,14 @@ public class GestioneRubrica {
      * @post Il nuovo contatto viene aggiunto alla lista, incrementando la sua 
      * dimensione di uno.
      */
-    public void add(Contatto nuovoContatto) {
-        if ((nuovoContatto.getCognome() != null && !nuovoContatto.getCognome().isEmpty()) ||
+    public boolean add(Contatto nuovoContatto) {
+        if(!nuovoContatto.verifyContact()) return false;
+        if((nuovoContatto.getCognome() != null && !nuovoContatto.getCognome().isEmpty()) ||
              (nuovoContatto.getNome() != null && !nuovoContatto.getNome().isEmpty())) {
-                  listaContatti.add(nuovoContatto); // Se i campi non sono vuoti aggiunge il contatto.
+                  listaContatti.add(nuovoContatto);// Se i campi non sono vuoti aggiunge il contatto.
+                  return true;
     }
+        else return false;
 }
 
 

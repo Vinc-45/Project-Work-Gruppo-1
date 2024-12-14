@@ -86,8 +86,7 @@ public class InterfacciaUtente {
     public void addContact(){
         Contatto c = this.askAdd();
         this.resetNotify();
-        if(c.verifyContact()){
-            this.rubrica.add(c);
+        if(this.rubrica.add(c)){
             this.showRubrica();
             this.stage.setScene(this.primaryScene);
             this.resetAddFields();
@@ -111,9 +110,8 @@ public class InterfacciaUtente {
     public void editContact(){
         Contatto c = this.askEdit();
         this.resetNotify();
-        if(c.verifyContact()){
+        if(this.rubrica.add(c)){
             this.rubrica.remove(this.getContact());
-            this.rubrica.add(c);
             this.showRubrica();
             this.stage.setScene(this.primaryScene);
         }else{
