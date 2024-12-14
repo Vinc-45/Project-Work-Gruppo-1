@@ -55,11 +55,12 @@ public class GestioneFileTest {
            gr.add(c2);
            gr.add(c3);
            File f=new File("test.csv");
-           assertTrue(gf.saveRubricaOnFile(f));
+           assertTrue(gf.saveRubricaOnFile(f));//test del formato csv
            File f1=new File("test.pdf");
-           assertFalse(gf.saveRubricaOnFile(f1));
+           assertFalse(gf.saveRubricaOnFile(f1));// test di un formato diverso
            gr.getListaContatti().clear();
            gf.loadRubricaFromFile(f);
+           //test sul contenuto
            assertEquals("mario",gr.getListaContatti().get(0).getNome());
            assertEquals("rossi",gr.getListaContatti().get(0).getCognome());
            assertEquals("ciao@gmail.com",gr.getListaContatti().get(0).getIndirizzoEmail()[0]);
@@ -105,10 +106,11 @@ public class GestioneFileTest {
            gr.add(c3);
            GestioneFile gf=new GestioneFile(gr);
            File f1=new File("test.pdf");
-           assertFalse(gf.loadRubricaFromFile(f1));
+           assertFalse(gf.loadRubricaFromFile(f1));//test su un formato errato
            File f=new File("test.csv");
-           gf.saveRubricaOnFile(f);
+           gf.saveRubricaOnFile(f);//test sul formato csv
            gr.getListaContatti().clear();
+           //test sul contenuto
            assertTrue(gf.loadRubricaFromFile(f));
            assertEquals("mario",gr.getListaContatti().get(0).getNome());
            assertEquals("rossi",gr.getListaContatti().get(0).getCognome());

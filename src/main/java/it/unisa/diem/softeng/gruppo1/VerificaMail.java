@@ -9,14 +9,15 @@ public class VerificaMail implements Verifica {
 
     /**
      * @brief Controlla se l'attributo indirizzoEmail è valido
-     * @param[in] contact Il contatto di cui si vuole verificare la validità
-     * @return Restituisce true se l'indirizzo email è valido altrimenti false
+     * @param[in] ind Il vettore di indirizzoEmail di cui si vuole verificare la validità
+     * @return Restituisce true se gli indirizzi email sono validi altrimenti false
      */
     @Override
     public boolean verify(String[] ind) {
        boolean[] flag1 = {false,false,false};
         boolean[] flag2 = {false,false,false};
         boolean flag3=true;
+        if(!(ind.length==3)) return false;
         if(ind[0].isEmpty() && ind[1].isEmpty() && ind[2].isEmpty()) return true; //verifico se tutte e tre le stringhe email sono vuote
         for(int i=0;i<ind.length;i++){
             if(!ind[i].isEmpty()){

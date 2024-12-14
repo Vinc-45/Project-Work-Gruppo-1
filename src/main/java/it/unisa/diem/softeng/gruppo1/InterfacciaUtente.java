@@ -81,7 +81,7 @@ public class InterfacciaUtente {
     }
     
     /**
-     * @brief Aggiunta del contatto alla tabella.
+     * @brief Aggiunta di un contatto alla tabella.
      */
     public void addContact(){
         Contatto c = this.askAdd();
@@ -124,7 +124,7 @@ public class InterfacciaUtente {
     /**
      * @brief Copia la lista della gestione rubrica in una lista locale.
      * 
-     * @post La lista in input non viene modificata, la lista locale viene aggiornata.
+     * @post La lista originale non viene modificata, la lista locale viene aggiornata.
      */
     public void showRubrica(){
         this.rubrica.sort();

@@ -9,9 +9,10 @@ package it.unisa.diem.softeng.gruppo1;
 public interface Verifica {
     
     /**
-     * @brief Controlla se il contatto è valido.
-     * @param[in] contact Il contatto di cui si vuole verificare la validità.
-     * @return Restituisce true se il contatto è valido altrimenti false.
+     * @brief Controlla se le stringhe sono valide.
+     * @param[in] s Vettore di stringhe di cui verificare la validità.
+     * @pre La dimensione del vettore deve essere 3.
+     * @return Restituisce true se le stringhe del vettore sono valide altrimenti false.
     */
     public abstract boolean verify(String[] s);
     
